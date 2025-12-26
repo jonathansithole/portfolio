@@ -1,0 +1,31 @@
+/* Hover slideshow animation */
+.group:hover .slideshow-0 {
+  animation: slideshow 10s infinite;
+  opacity: 1;
+}
+
+.group:hover .slideshow-1 {
+  animation: slideshow 10s infinite 4s;
+}
+
+.group:hover .slideshow-2 {
+  animation: slideshow 10s infinite 4s;
+}
+
+@keyframes slideshow {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
