@@ -70,7 +70,7 @@ export const PROJECT_EXPERIENCE = [
     images: [
       '/images/gamification-home.png',
       '/images/gamification-leaderboard.png',
-      '/images/gamification-modules.png'
+      '/images/gamification-map.png'
     ],
     highlights: [
       'Developed a web-based learning environment designed to combat high attrition rates in undergraduate Java programming courses',
