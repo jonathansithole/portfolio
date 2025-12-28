@@ -511,7 +511,7 @@ const AboutView = () => (
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center gap-8 mb-16 border-b border-slate-800 pb-12">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="relative w-40 h-40 shrink-0 rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl">
-            <img src="src/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
+            <img src="public/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-black text-white">Jonathan Sithole</h1>
