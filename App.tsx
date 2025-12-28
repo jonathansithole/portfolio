@@ -128,12 +128,12 @@ const Navbar = ({ activeTab, setTab }: { activeTab: string, setTab: (t: string) 
             </button>
           ))}
           <a 
-  href="/documents/JS_CV.pdf" // <--- UPDATED NAME
-  download="Jonathan_Sithole_CV.pdf" // This is the name the user sees when downloading
+  href="/documents/JS_CV.pdf" 
+  download="Jonathan_Sithole_CV.pdf" 
   className="px-8 py-4 bg-transparent border border-slate-600 hover:border-slate-400 hover:bg-slate-800/50 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-all"
 >
   <FileText size={16} />
-  View CV
+  Download CV
 </a>
 
         </div>
@@ -196,7 +196,7 @@ const Home = ({ setTab }: { setTab: (t: string) => void }) => {
               <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                 <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-slate-900 shadow-2xl">
-                  <img src="public/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full transform transition duration-500 group-hover:scale-105" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
+                  <img src="/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full transform transition duration-500 group-hover:scale-105" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
                 </div>
               </div>
               <div>
@@ -235,9 +235,7 @@ const Home = ({ setTab }: { setTab: (t: string) => void }) => {
               <button onClick={() => setTab("projects")} className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-all transform hover:scale-105 shadow-lg shadow-blue-900/20">
                 View My Projects
               </button>
-              <button className="px-8 py-4 bg-transparent border border-slate-600 hover:border-slate-400 hover:bg-slate-800/50 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-all">
-                <FileText size={18} /> Download Résumé
-              </button>
+             
             </div>
           </div>
         </div>
@@ -510,7 +508,7 @@ const AboutView = () => (
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center gap-8 mb-16 border-b border-slate-800 pb-12">
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="relative w-40 h-40 shrink-0 rounded-full overflow-hidden border-4 border-slate-800 shadow-2xl">
-            <img src="public/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
+            <img src="/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-black text-white">Jonathan Sithole</h1>
