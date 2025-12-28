@@ -127,11 +127,10 @@ const Navbar = ({ activeTab, setTab }: { activeTab: string, setTab: (t: string) 
               {tab}
             </button>
           ))}
-          <a
-  href="public/documents/resume.pdf"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hidden sm:flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-all"
+          <a 
+  href="/documents/JS_CV.pdf" // <--- UPDATED NAME
+  download="Jonathan_Sithole_CV.pdf" // This is the name the user sees when downloading
+  className="px-8 py-4 bg-transparent border border-slate-600 hover:border-slate-400 hover:bg-slate-800/50 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-all"
 >
   <FileText size={16} />
   View CV
