@@ -128,7 +128,7 @@ const Navbar = ({ activeTab, setTab }: { activeTab: string, setTab: (t: string) 
             </button>
           ))}
           <a
-  href="public/documents/Jonathan sithole resume.pdf"
+  href="public/documents/resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
   className="hidden sm:flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-semibold transition-all"
@@ -197,7 +197,7 @@ const Home = ({ setTab }: { setTab: (t: string) => void }) => {
               <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                 <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-slate-900 shadow-2xl">
-                  <img src="src/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full transform transition duration-500 group-hover:scale-105" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
+                  <img src="public/images/headshot.png" alt="Jonathan Sithole" className="object-cover w-full h-full transform transition duration-500 group-hover:scale-105" onError={(e) => { (e.target as HTMLImageElement).src = "https://via.placeholder.com/150"; }} />
                 </div>
               </div>
               <div>
