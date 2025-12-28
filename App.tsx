@@ -129,7 +129,7 @@ const Navbar = ({ activeTab, setTab }: { activeTab: string, setTab: (t: string) 
             </button>
           ))}
           <a 
-  href="/documents/JS_CV.pdf" 
+  href="/documents/Jonathan_Sithole_CV.pdf" 
   download="Jonathan_Sithole_CV.pdf" 
   className="px-8 py-4 bg-transparent border border-slate-600 hover:border-slate-400 hover:bg-slate-800/50 text-white rounded-lg font-bold flex items-center justify-center gap-2 transition-all"
 >
