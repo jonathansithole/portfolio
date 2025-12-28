@@ -591,10 +591,10 @@ const ContactView = () => {
     setStatus('sending');
 
     emailjs.sendForm(
-      'YOUR_SERVICE_ID',   // Paste your Service ID here (e.g. service_xyz)
-      'YOUR_TEMPLATE_ID',  // Paste your Template ID here (e.g. template_abc)
+      'service_0qpek1l',   
+      'template_fos7myj',  
       form.current!,
-      'YOUR_PUBLIC_KEY'    // Paste your Public Key here (e.g. user_123...)
+      'TmMz1Sbvlz0f5pThT'    
     )
     .then((result) => {
         console.log('Email sent:', result.text);
