@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import React, { useState, useEffect, useRef  } from 'react';
 import { 
   Menu, X, Github, Linkedin, FileText, ExternalLink, 
   Code, ChevronRight, Send, Terminal, Sparkles, Filter,
@@ -581,66 +582,98 @@ const AboutView = () => (
     </div>
   );
   
-  const ContactView = () => {
-    const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-    const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
-  
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      setStatus('sending');
-      setTimeout(() => {
+const ContactView = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    
+    emailjs.sendForm(
+      'service_0qpek1l',   
+      'template_fos7myj', 
+      form.current!,
+      'TmMz1Sbvlz0f5pThT'    
+    )
+    .then((result) => {
+        console.log(result.text);
         setStatus('success');
-        setFormState({ name: '', email: '', message: '' });
-        setTimeout(() => setStatus('idle'), 3000);
-      }, 1500);
-    };
-  
-    return (
-      <div className="py-24 max-w-5xl mx-auto px-4">
-        <div className="flex flex-col items-center text-center gap-8 mb-16 border-b border-slate-800 pb-12">
-          <h1 className="text-4xl md:text-5xl font-black text-white">Get In Touch</h1>
-          <p className="text-slate-400 max-w-2xl leading-relaxed">
-            Detail-oriented Information Systems graduate. Passionate about solving real-world business problems through technology.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <h3 className="text-2xl font-bold">Contact Info</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a href="tel:+27633675620" className="group bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-                <div className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors"><Phone size={20} /></div>
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Call Me</p>
-                <p className="text-white font-semibold">+27 63 367 5620</p>
-              </a>
-              <a href="mailto:Jonathansithole21@gmail.com" className="group bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
-                <div className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center text-purple-500 mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors"><Mail size={20} /></div>
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Email Me</p>
-                <p className="text-white font-semibold text-sm truncate">Jonathansithole21@gmail.com</p>
-              </a>
-            </div>
-          </div>
-          <form onSubmit={handleSubmit} className="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-6">
-              <h3 className="text-xl font-bold mb-6">Send a Message</h3>
-              <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-400">Your Name</label>
-                  <input type="text" required value={formState.name} onChange={e => setFormState({...formState, name: e.target.value})} placeholder="Recruiter Name" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 text-white" />
-              </div>
-              <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-400">Email</label>
-                  <input type="email" required value={formState.email} onChange={e => setFormState({...formState, email: e.target.value})} placeholder="name@company.com" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 text-white" />
-              </div>
-              <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-400">Message</label>
-                  <textarea rows={4} required value={formState.message} onChange={e => setFormState({...formState, message: e.target.value})} placeholder="Hi Jonathan, I'd like to discuss a role..." className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 text-white resize-none" />
-              </div>
-              <button type="submit" disabled={status === 'sending' || status === 'success'} className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${status === 'success' ? 'bg-green-600 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}>
-                {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent!' : 'Send Message'} {status === 'idle' && <Send size={18} />}
-              </button>
-          </form>
-        </div>
-      </div>
-    );
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setStatus('idle');
+          if (form.current) form.current.reset();
+        }, 3000);
+    }, (error) => {
+        console.log(error.text);
+        setStatus('error');
+    });
   };
+
+  return (
+    <div className="py-24 max-w-5xl mx-auto px-4">
+      <div className="flex flex-col items-center text-center gap-8 mb-16 border-b border-slate-800 pb-12">
+        <h1 className="text-4xl md:text-5xl font-black text-white">Get In Touch</h1>
+        <p className="text-slate-400 max-w-2xl leading-relaxed">
+          Detail-oriented Information Systems graduate. Passionate about solving real-world business problems through technology.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="space-y-8">
+          <h3 className="text-2xl font-bold">Contact Info</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href="tel:+27633675620" className="group bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
+              <div className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center text-blue-500 mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors"><Phone size={20} /></div>
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Call Me</p>
+              <p className="text-white font-semibold">+27 63 367 5620</p>
+            </a>
+            <a href="mailto:Jonathansithole21@gmail.com" className="group bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-blue-500 transition-all hover:-translate-y-1">
+              <div className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center text-purple-500 mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors"><Mail size={20} /></div>
+              <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Email Me</p>
+              <p className="text-white font-semibold text-sm truncate">Jonathansithole21@gmail.com</p>
+            </a>
+          </div>
+        </div>
+        
+        {/* Contact Form with ref attached */}
+        <form ref={form} onSubmit={handleSubmit} className="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-6">
+            <h3 className="text-xl font-bold mb-6">Send a Message</h3>
+            
+            {/* Added 'name' attributes so EmailJS knows which field is which */}
+            <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400">Your Name</label>
+                <input type="text" name="from_name" required placeholder="Recruiter Name" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 text-white" />
+            </div>
+            <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400">Email</label>
+                <input type="email" name="from_email" required placeholder="name@company.com" className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 text-white" />
+            </div>
+            <div className="space-y-2">
+                <label className="text-sm font-bold text-slate-400">Message</label>
+                <textarea name="message" rows={4} required placeholder="Hi Jonathan, I'd like to discuss a role..." className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 text-white resize-none" />
+            </div>
+            
+            <button 
+              type="submit" 
+              disabled={status === 'sending' || status === 'success'} 
+              className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
+                status === 'success' ? 'bg-green-600 text-white' : 
+                status === 'error' ? 'bg-red-600 text-white' : 
+                'bg-blue-600 hover:bg-blue-700 text-white'
+              }`}
+            >
+              {status === 'sending' ? 'Sending...' : 
+               status === 'success' ? 'Message Sent!' : 
+               status === 'error' ? 'Failed - Try Email Link' : 
+               'Send Message'} 
+              {status === 'idle' && <Send size={18} />}
+            </button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
 // ==========================================
 // 4. MAIN APP ENTRY
