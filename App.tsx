@@ -202,7 +202,7 @@ const Home = ({ setTab }: { setTab: (t: string) => void }) => {
               </div>
               <div>
                 <h1 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-slate-300 pb-1">Jonathan Sithole</h1>
-                <p className="text-xl text-blue-500 font-medium mt-2">Master of Informatics Student & Developer</p>
+                <p className="text-xl text-blue-500 font-medium mt-2">Information Systems honours graduate & Developer</p>
               </div>
               
             </div>
@@ -229,7 +229,7 @@ const Home = ({ setTab }: { setTab: (t: string) => void }) => {
           </div>
           <div className="lg:w-1/2 w-full flex flex-col items-center lg:items-start space-y-8 text-center lg:text-left pt-2">
             <p className="text-slate-300 max-w-2xl leading-relaxed text-lg">
-              Full Stack Developer and Informatics Master's student specializing in building scalable web applications and data-driven systems. 
+              Full Stack Developer, Information Systems honours graduate and Informatics Masters candidate specializing in building scalable web applications and data-driven systems. 
               I bridge the gap between complex backend logic and intuitive frontend design.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -513,7 +513,7 @@ const AboutView = () => (
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-black text-white">Jonathan Sithole</h1>
-            <p className="text-xl text-blue-500 font-medium mt-2">Master of Informatics Student & Developer</p>
+            <p className="text-xl text-blue-500 font-medium mt-2"> Information Systems honours graduate & Developer</p>
           </div>
         </div>
         <div className="flex flex-wrap justify-center md:justify-start gap-4 text-slate-400 text-sm">
@@ -526,7 +526,7 @@ const AboutView = () => (
           <section className="text-center lg:text-left">
             <h1 className="text-4xl font-extrabold mb-6 text-white">About Me</h1>
             <p className="text-slate-400 leading-relaxed text-base">
-              I’m Jonathan Sithole, a Master of Commerce in Informatics student with a focus on Information Systems. I have hands-on experience in software and web development, systems design, and data analysis through academic projects and freelance tech support.
+              I’m Jonathan Sithole, Information Systems honours graduate and Master of Commerce in Informatics candidate with a focus on Informatics. I have hands-on experience in software and web development, systems design, and data analysis through academic projects and freelance tech support.
             </p>
           </section>
           <section className="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:shadow-lg transition-shadow">
